@@ -21,8 +21,29 @@ $("input[type='text']").keypress(function(event){
       // extract value
       var newtd = $("input").val();
       // add to todolist as html
-      $("ul").append("<li><span>x</span> " + newtd + "</li>")
+      $("ul").append("<li><span><i class='fa fa-trash'></i></span>" + newtd + "</li>");
       // clear input
       $(this).val("");
   }
+});
+
+$(".fa-plus").click(function(){
+  // select input and fade it out
+  $("input[type='text']").fadeToggle();
+
+});
+
+$('#delete').click(function(){
+  $('li').fadeOut(500, function(){
+    // this refers to the first this parent (not the same this)
+    $(this).remove();
+  });
+});
+
+$('#check').click(function(){
+  $('li').toggleClass('completed');
+});
+
+$('#hide').click(function(){
+  $("ul").slideToggle();
 });
